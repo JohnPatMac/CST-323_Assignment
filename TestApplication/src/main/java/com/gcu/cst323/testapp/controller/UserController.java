@@ -52,5 +52,12 @@ public class UserController {
         repo.deleteById(id);
         return "redirect:/users";
     }
+    
+    @GetMapping("/{id}")
+    public String viewUser(@PathVariable Long id, Model model) {
+        model.addAttribute("user", repo.findById(id).orElseThrow());
+        return "view-user";
+    }
+
 }
 
